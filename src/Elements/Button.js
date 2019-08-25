@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
-const ButtonElement = ({color, size, customClass, content}) => (
+const ButtonElement = ({color, size, customClass, content, onClick}) => (
   <div>
-    <Button color={color} size={size} className={customClass}><Button.Content>{content}</Button.Content></Button>
+    <Button color={color} size={size} className={customClass} onClick={onClick} ><Button.Content>{content}</Button.Content></Button>
   </div>
 )
 

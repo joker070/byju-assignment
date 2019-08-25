@@ -1,19 +1,20 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
 
-const data = ['1', '2', '3', '4'];
-const ListElement = () => (
-  <List divided verticalAlign="middle" className="listContent">
-      {data.map(i => {
+const ListElement = ({data, filterText}) => {
+    const class_style = data.length === 1 && filterText ? 'highlight_text' : '';
+return (
+  <List divided verticalAlign="middle" className="listContent list_style">
+      {data.map((element) => {
           return (
-            <List.Item>
-            <List.Content className="listContent">
-              {i}
+            <List.Item key={element}>
+            <List.Content className={`listContent ${class_style}`}> 
+              {element}
             </List.Content>
           </List.Item> 
           )
       })}
   </List>
-)
-
+);
+}
 export default ListElement

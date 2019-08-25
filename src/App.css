@@ -13,6 +13,10 @@ body {
   margin: 0;
 }
 
+.layout {
+  margin-top: 5%;
+}
+
 .layout_position {
 padding: 20px !important;
  background: #e0e1e2;
@@ -53,4 +57,13 @@ padding: 20px !important;
   padding-top: 62px;
   text-align: center;
   font-size: 1.25em;
+}
+
+.list_style {
+  max-height: 491px;
+  overflow: auto;
+}
+
+.highlight_text {
+  background: yellow;
 }
