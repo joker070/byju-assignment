@@ -3,6 +3,8 @@ import Search from './Search';
 import Result from './Result';
 import {  Grid, Segment } from 'semantic-ui-react'
 
+// holds the main components, Search and Result, keeping in mind modularity.
+
 export default class Layout extends Component {
 
   constructor() {

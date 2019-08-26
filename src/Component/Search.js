@@ -16,7 +16,9 @@ export default class Search extends Component {
     };
   } 
 
-  performSearch = (searchText = 'web') => {
+  // Make's API Call to fetch Repo's on Click of GO.
+
+  performSearch = (searchText = '') => {
     const {setRepos} = this.props;
     axios.get(`https://api.github.com/users/${searchText}/repos`, { headers: {'Accept': 'application/vnd.github.v3+json'}})
       .then(response => {
@@ -43,12 +45,15 @@ export default class Search extends Component {
       })  
   }
 
+  // to record the search text.
+
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });
   }
 
+  // to record the filter keyword.
+
   onFilterTextChange = e => {
-    e.preventDefault();
     const {repos} = this.state;
     const {setRepos, setFilterText} = this.props;
     setFilterText(e.target.value);
@@ -60,13 +65,16 @@ export default class Search extends Component {
     });
   }
 
+  // invokes perform search function on click of Go , which then triggers the API Call.
+
   handleSubmit = e => {
-    e.preventDefault();
     const {searchText} = this.state;
     this.setState({loading: true} , () => {
       this.performSearch(searchText);
     });  
   }
+
+  // to clear the search text on click of clear button.
 
   clearSearchText = e => {
     const {setRepos} = this.props;
@@ -75,8 +83,9 @@ export default class Search extends Component {
     });
   }
 
+  // to clear the filter text on click of clear button.
+
   clearFilterText = e => {
-    e.preventDefault();
     const {repos} = this.state;
     const {setRepos, setFilterText} = this.props;
     this.setState({ filterText: ''}, () => {
@@ -97,7 +106,7 @@ export default class Search extends Component {
       <InputElement customClass="input_class" placeholder="Search" onChange={this.onSearchChange} value={searchText} />
       </Grid.Column>
       <Grid.Column width={3}>
-      <ButtonElement color="green" content="Go" onClick={this.handleSubmit} />
+      <ButtonElement color="green" content="Go" onClick={this.handleSubmit} disabled={searchText === ''} />
       </Grid.Column>
       <Grid.Column width={3}>
       <ButtonElement content="Clear" customClass="button_class" onClick={this.clearSearchText}/>

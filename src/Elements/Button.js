@@ -1,9 +1,11 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
-const ButtonElement = ({color, size, customClass, content, onClick}) => (
+// Custom Button written keeping in mind to reuse.
+
+const ButtonElement = ({color, size, customClass, content, onClick, disabled}) => (
   <div>
-    <Button color={color} size={size} className={customClass} onClick={onClick} ><Button.Content>{content}</Button.Content></Button>
+    <Button disabled={disabled} color={color} size={size} className={customClass} onClick={onClick} ><Button.Content>{content}</Button.Content></Button>
   </div>
 )
 

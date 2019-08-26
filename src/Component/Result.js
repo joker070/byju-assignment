@@ -3,6 +3,8 @@ import { Grid } from 'semantic-ui-react'
 import ListElement from '../Elements/List';
 import NoData from './NoData';
 
+// renders the repos in the form of list.
+
 const Result = ({data, filterText}) => {
     return(
         data.length > 0 ?
