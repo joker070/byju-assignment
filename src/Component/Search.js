@@ -78,7 +78,7 @@ export default class Search extends Component {
 
   clearSearchText = e => {
     const {setRepos} = this.props;
-    this.setState({ searchText: ''}, () => {
+    this.setState({ searchText: '', repos: []}, () => {
       setRepos([]);
     });
   }
@@ -95,7 +95,7 @@ export default class Search extends Component {
   }
 
   render() {
-  const {searchText, loading, filterText} = this.state;
+  const {searchText, loading, filterText, repos} = this.state;
   return(
     <Grid className="layout_position"  columns={3}>
       <Dimmer active={loading} inverted>
@@ -114,7 +114,7 @@ export default class Search extends Component {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={10}>
-      <InputElement customClass="input_class"  placeholder="Enter some keywords to filter Eg : algo"  onChange={this.onFilterTextChange} value={filterText}/>
+      <InputElement customClass="input_class"  disabled={repos.length === 0} placeholder="Enter some keywords to filter Eg : algo"  onChange={this.onFilterTextChange} value={filterText}/>
       </Grid.Column>
       <Grid.Column width={3}>
       <ButtonElement content="Clear" customClass="button_class" onClick={this.clearFilterText} />
